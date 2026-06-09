@@ -1,0 +1,184 @@
+<?php
+
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MapelController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\PengumumanSekolahController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TugasController;
+use App\Http\Controllers\UserController;
+<<<<<<< HEAD
+use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\BankSoalController;
+use App\Http\Controllers\TryOutController;
+use App\Http\Controllers\TryOutJawabanController;
+use App\Http\Controllers\HasilTryOutController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\PpdbApplicantController;
+use App\Http\Controllers\PpdbYearController;
+=======
+>>>>>>> a01621e (Initial commit)
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+<<<<<<< HEAD
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/ppdb-daftar', [PpdbApplicantController::class, 'create'])->name('ppdb.register');
+Route::post('/ppdb-daftar', [PpdbApplicantController::class, 'store'])->name('ppdb.register.store');
+Route::get('/ppdb/terima-kasih', [PpdbApplicantController::class, 'thanks'])->name('ppdb.thanks');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile');
+    Route::put('/update-profile', [UserController::class, 'update'])->name('update.profile');
+    Route::get('/edit-password', [UserController::class, 'editPassword'])->name('ubah-password');
+    Route::patch('/update-password', [UserController::class, 'updatePassword'])->name('update-password');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:guru']], function () {
+    Route::get('/guru/dashboard', [HomeController::class, 'guru'])->name('guru.dashboard');
+    Route::resource('materi', MateriController::class);
+    Route::resource('tugas', TugasController::class);
+=======
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('auth');
+
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+>>>>>>> a01621e (Initial commit)
+
+    Route::get('/absensi', [AbsensiController::class, 'index'])
+        ->name('absensi.index');
+
+    Route::get('/absensi/input/{kelas}', [AbsensiController::class, 'input'])
+        ->name('absensi.input');
+
+    Route::post('/absensi/store', [AbsensiController::class, 'store'])
+        ->name('absensi.store');
+
+    Route::get('/absensi/laporan', [AbsensiController::class, 'laporan'])
+        ->name('absensi.laporan');
+<<<<<<< HEAD
+
+    Route::get('/absensi/export-excel', [AbsensiController::class, 'exportExcel'])
+        ->name('absensi.export.excel');
+
+    Route::get('/absensi/export-pdf', [AbsensiController::class, 'exportPdf'])
+        ->name('absensi.export.pdf');
+
+    Route::get('/jawaban-download/{id}', [TugasController::class, 'downloadJawaban'])->name('guru.jawaban.download');
+
+    // Penilaian Siswa untuk Guru
+    Route::get('penilaian', [PenilaianController::class, 'index'])->name('penilaian.index');
+    Route::get('penilaian/create', [PenilaianController::class, 'create'])->name('penilaian.create');
+    Route::post('penilaian', [PenilaianController::class, 'store'])->name('penilaian.store');
+    Route::get('penilaian/{penilaian}/edit', [PenilaianController::class, 'edit'])->name('penilaian.edit');
+    Route::put('penilaian/{penilaian}', [PenilaianController::class, 'update'])->name('penilaian.update');
+    Route::get('penilaian/rekap', [PenilaianController::class, 'rekap'])->name('penilaian.rekap');
+
+    // CBT Routes untuk Guru
+    Route::resource('bank-soal', BankSoalController::class);
+    Route::patch('bank-soal/{bankSoal}/publish', [BankSoalController::class, 'publish'])->name('bank-soal.publish');
+
+    Route::resource('try-out', TryOutController::class);
+    Route::patch('try-out/{tryOut}/publish', [TryOutController::class, 'publish'])->name('try-out.publish');
+    Route::get('try-out/{tryOut}/edit-soal', [TryOutController::class, 'editSoal'])->name('try-out.edit-soal');
+    Route::post('try-out/{tryOut}/add-soal', [TryOutController::class, 'addSoal'])->name('try-out.add-soal');
+    Route::get('try-out/available-soals', [TryOutController::class, 'getAvailableSoals'])->name('try-out.available-soals');
+
+    Route::resource('hasil-try-out', HasilTryOutController::class)->only(['index', 'show']);
+    Route::get('hasil-try-out/{hasilTryOut}/siswa', [HasilTryOutController::class, 'showSiswa'])->name('hasil-try-out.show-siswa');
+    Route::get('hasil-try-out/{tryOut}/export', [HasilTryOutController::class, 'export'])->name('hasil-try-out.export');
+    Route::get('hasil-try-out/{tryOut}/statistik-chart', [HasilTryOutController::class, 'getStatistikChart'])->name('hasil-try-out.statistik-chart');
+=======
+});
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile');
+    Route::put('/update-profile', [UserController::class, 'update'])->name('update.profile');
+    Route::get('/edit-password', [UserController::class, 'editPassword'])->name('ubah-password');
+    Route::patch('/update-password', [UserController::class, 'updatePassword'])->name('update-password');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:guru']], function () {
+    Route::get('/guru/dashboard', [HomeController::class, 'guru'])->name('guru.dashboard');
+    Route::resource('materi', MateriController::class);
+    Route::resource('tugas', TugasController::class);
+    Route::get('/jawaban-download/{id}', [TugasController::class, 'downloadJawaban'])->name('guru.jawaban.download');
+>>>>>>> a01621e (Initial commit)
+});
+Route::group(['middleware' => ['auth', 'checkRole:siswa']], function () {
+    Route::get('/siswa/dashboard', [HomeController::class, 'siswa'])->name('siswa.dashboard');
+    Route::get('/siswa/materi', [MateriController::class, 'siswa'])->name('siswa.materi');
+    Route::get('/materi-download/{id}', [MateriController::class, 'download'])->name('siswa.materi.download');
+    Route::get('/siswa/tugas', [TugasController::class, 'siswa'])->name('siswa.tugas');
+    Route::get('/tugas-download/{id}', [TugasController::class, 'download'])->name('siswa.tugas.download');
+    Route::post('/kirim-jawaban', [TugasController::class, 'kirimJawaban'])->name('kirim-jawaban');
+<<<<<<< HEAD
+
+    // CBT Routes untuk Siswa
+    Route::get('try-out-siswa', [TryOutJawabanController::class, 'indexForSiswa'])->name('try-out-jawaban.index-siswa');
+    Route::get('try-out/{tryOut}/kerjakan', [TryOutJawabanController::class, 'showForSiswa'])->name('try-out-jawaban.kerjakan');
+    Route::post('try-out/jawaban/save', [TryOutJawabanController::class, 'saveJawaban'])->name('try-out-jawaban.save');
+    Route::post('try-out/finalize', [TryOutJawabanController::class, 'finalize'])->name('try-out-jawaban.finalize');
+    Route::get('try-out/hasil/{hasilTryOut}', [TryOutJawabanController::class, 'showHasil'])->name('try-out-jawaban.hasil');
+
+    // Penilaian Siswa untuk Siswa
+    Route::get('/siswa/penilaian', [PenilaianController::class, 'studentIndex'])->name('siswa.penilaian.index');
+    Route::get('/siswa/penilaian/{penilaian}', [PenilaianController::class, 'studentShow'])->name('siswa.penilaian.show');
+});
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('penilaian/export-pdf', [PenilaianController::class, 'exportStudentPdf'])->name('penilaian.export.student.pdf');
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:orangtua']], function () {
+    Route::get('/orangtua/dashboard', [HomeController::class, 'orangtua'])->name('orangtua.dashboard');
+    Route::get('/orangtua/notifikasi', [HomeController::class, 'orangtuaNotifications'])->name('orangtua.notifikasi');
+=======
+});
+Route::group(['middleware' => ['auth', 'checkRole:orangtua']], function () {
+    Route::get('/orangtua/dashboard', [HomeController::class, 'orangtua'])->name('orangtua.dashboard');
+>>>>>>> a01621e (Initial commit)
+    Route::get('/orangtua/tugas/siswa', [TugasController::class, 'orangtua'])->name('orangtua.tugas.siswa');
+});
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+    Route::get('/admin/dashboard', [HomeController::class, 'admin'])->name('admin.dashboard');
+    Route::resource('jurusan', JurusanController::class);
+    Route::resource('mapel', MapelController::class);
+    Route::resource('guru', GuruController::class);
+    Route::resource('kelas', KelasController::class);
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('jadwal', JadwalController::class);
+    Route::resource('pengumuman-sekolah', PengumumanSekolahController::class);
+<<<<<<< HEAD
+    Route::resource('ppdb-year', PpdbYearController::class);
+    Route::post('ppdb-year/import', [PpdbYearController::class, 'import'])->name('ppdb-year.import');
+    Route::resource('ppdb-applicant', PpdbApplicantController::class)->only(['index', 'show', 'update', 'destroy']);
+=======
+>>>>>>> a01621e (Initial commit)
+    Route::resource('pengaturan', PengaturanController::class);
+});
