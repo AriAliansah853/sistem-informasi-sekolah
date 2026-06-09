@@ -20,12 +20,9 @@ class Orangtua extends Model
     {
         return $this->belongsToMany(Siswa::class, 'orangtua_siswas', 'orangtua_id', 'siswa_id');
     }
-<<<<<<< HEAD
 
     public function notifications()
     {
         return $this->hasMany(OrangtuaNotification::class);
     }
-=======
->>>>>>> a01621e (Initial commit)
 }

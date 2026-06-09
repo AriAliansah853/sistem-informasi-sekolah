@@ -1521,17 +1521,10 @@ h6 .badge {
 /* 3.18 Navbar */
 .navbar {
   height: 70px;
-<<<<<<< HEAD
   /* left: 250px; */
   /* right: 5px; */
   /* position: absolute; */
   /* z-index: 890; */
-=======
-  left: 250px;
-  right: 5px;
-  position: absolute;
-  z-index: 890;
->>>>>>> a01621e (Initial commit)
   background-color: transparent; }
   .navbar.active {
     background-color: #6777ef;
@@ -1550,11 +1543,7 @@ h6 .badge {
 .navbar {
   align-items: center; }
   .navbar .navbar-brand {
-<<<<<<< HEAD
     color: black;
-=======
-    color: #fff;
->>>>>>> a01621e (Initial commit)
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 700; }
@@ -1583,13 +1572,9 @@ h6 .badge {
     border-radius: 0 3px 3px 0;
     background-color: #fff;
     padding: 9px 15px 9px 15px;
-<<<<<<< HEAD
     border-color: transparent;
   
   }
-=======
-    border-color: transparent; }
->>>>>>> a01621e (Initial commit)
   .navbar .form-inline .search-backdrop {
     position: fixed;
     top: 0;

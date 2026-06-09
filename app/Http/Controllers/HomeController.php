@@ -73,16 +73,11 @@ class HomeController extends Controller
 
     public function orangtua()
     {
-<<<<<<< HEAD
         $orangtua = Orangtua::with(['siswas.kelas', 'notifications'])
-=======
-        $orangtua = Orangtua::with('siswas.kelas')
->>>>>>> a01621e (Initial commit)
             ->where('user_id', Auth::user()->id)
             ->first();
         $pengumumans = PengumumanSekolah::active()->get();
 
-<<<<<<< HEAD
         return view('pages.orangtua.dashboard', compact('orangtua', 'pengumumans'));
     }
 
@@ -98,9 +93,4 @@ class HomeController extends Controller
 
         return view('pages.orangtua.notifikasi', compact('notifications'));
     }
-=======
-        // dd($orangtua->toArray());
-        return view('pages.orangtua.dashboard', compact('orangtua', 'pengumumans'));
-    }
->>>>>>> a01621e (Initial commit)
 }

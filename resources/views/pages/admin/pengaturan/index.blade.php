@@ -16,7 +16,6 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-<<<<<<< HEAD
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -133,24 +132,6 @@
                                 </div>
 
                                 <div class="card-footer mt-4">
-=======
-                                <div class="form-group">
-                                    <label for="nama_sekolah">Nama Sekolah</label>
-                                    <input type="text" id="nama_sekolah" name="nama_sekolah"
-                                        class="form-control @error('nama_sekolah') is-invalid @enderror"
-                                        placeholder="{{ __('Nama Sekolah') }}" value="{{ $pengaturan->name }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="logo">Logo Sekolah</label>
-                                    <div>
-                                        <img src="{{ URL::asset($pengaturan->logo) ?? 'https://via.placeholder.com/300' }}"
-                                            alt="Logo Sekolah" width="100" class="mb-2">
-                                    </div>
-                                    <input type="file" id="logo" name="logo"
-                                        class="form-control @error('logo') is-invalid @enderror">
-                                </div>
-                                <div class="card-footer">
->>>>>>> a01621e (Initial commit)
                                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
                                         &nbsp; Simpan Perubahan</button>
                                 </div>

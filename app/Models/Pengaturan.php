@@ -9,7 +9,6 @@ class Pengaturan extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
     protected $fillable = [
         'name',
         'logo',
@@ -26,7 +25,4 @@ class Pengaturan extends Model
         'contact_phone',
         'contact_email'
     ];
-=======
-    protected $fillable = ['name', 'logo'];
->>>>>>> a01621e (Initial commit)
 }

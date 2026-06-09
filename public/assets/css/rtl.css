@@ -163,13 +163,8 @@ body.layout-2 .main-footer {
   text-align: right; }
 
 .navbar {
-<<<<<<< HEAD
   /* right: 250px;
   left: 0px; } */
-=======
-  right: 250px;
-  left: 0px; }
->>>>>>> a01621e (Initial commit)
 
 .progress {
   direction: ltr; }

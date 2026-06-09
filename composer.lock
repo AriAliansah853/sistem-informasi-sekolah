@@ -28,7 +28,7 @@
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpstan/phpstan": "2.1.22",
                 "phpunit/phpunit": "^11.5"
-=======
+
     "content-hash": "516b08b61785166f8a4f418b581b90a8",
     "packages": [
         {

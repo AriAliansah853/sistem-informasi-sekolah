@@ -28,12 +28,9 @@
 
             <li class="{{ request()->routeIs('pengumuman-sekolah.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pengumuman-sekolah.index') }}"><i class="fas fa-bullhorn"></i> <span>Pengumuman</span></a></li>
 
-<<<<<<< HEAD
             <li class="{{ request()->routeIs('ppdb-year.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ppdb-year.index') }}"><i class="fas fa-chart-line"></i> <span>PPDB Tahunan</span></a></li>
             <li class="{{ request()->routeIs('ppdb-applicant.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ppdb-applicant.index') }}"><i class="fas fa-user-graduate"></i> <span>Calon Siswa PPDB</span></a></li>
 
-=======
->>>>>>> a01621e (Initial commit)
             <li class="{{ request()->routeIs('pengaturan.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pengaturan.index') }}"><i class="fas fa-cog"></i> <span>Pengaturan</span></a></li>
 
             @elseif (Auth::check() && Auth::user()->roles == 'guru')
@@ -41,31 +38,22 @@
             <li class="menu-header">Master Data</li>
             <li class="{{ request()->routeIs('materi.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('materi.index') }}"><i class="fas fa-book"></i> <span>Materi</span></a></li>
             <li class="{{ request()->routeIs('tugas.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('tugas.index') }}"><i class="fas fa-list"></i> <span>Tugas</span></a></li>
-<<<<<<< HEAD
             <li class="{{ request()->routeIs('absensi.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('absensi.index') }}"><i class="fas fa-calendar-check"></i> <span>Absensi</span></a></li>
             <li class="{{ request()->routeIs('penilaian.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('penilaian.index') }}"><i class="fas fa-clipboard-list"></i> <span>Penilaian</span></a></li>
             <li class="{{ request()->routeIs('bank-soal.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('bank-soal.index') }}"><i class="fas fa-book-open"></i> <span>Bank Soal</span></a></li>
             <li class="{{ request()->routeIs('try-out.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('try-out.index') }}"><i class="fas fa-list-check"></i> <span>Try Out</span></a></li>
             <li class="{{ request()->routeIs('hasil-try-out.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('hasil-try-out.index') }}"><i class="fas fa-chart-bar"></i> <span>Hasil Try Out</span></a></li>
-=======
->>>>>>> a01621e (Initial commit)
 
             @elseif (Auth::check() && Auth::user()->roles == 'siswa')
             <li class="{{ request()->routeIs('siswa.dashboard.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('siswa.dashboard') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a></li>
             <li class="{{ request()->routeIs('materi.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('siswa.materi') }}"><i class="fas fa-book"></i> <span>Materi</span></a></li>
             <li class="{{ request()->routeIs('tugas.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('siswa.tugas') }}"><i class="fas fa-list"></i> <span>Tugas</span></a></li>
-<<<<<<< HEAD
             <li class="{{ request()->routeIs('try-out-jawaban.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('try-out-jawaban.index-siswa') }}"><i class="fas fa-file-alt"></i> <span>Try Out</span></a></li>
             <li class="{{ request()->routeIs('siswa.penilaian.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('siswa.penilaian.index') }}"><i class="fas fa-clipboard-list"></i> <span>Nilai Saya</span></a></li>
 
             @else
             <li class="{{ request()->routeIs('orangtua.dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('orangtua.dashboard') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a></li>
             <li class="{{ request()->routeIs('orangtua.notifikasi') ? 'active' : '' }}"><a class="nav-link" href="{{ route('orangtua.notifikasi') }}"><i class="fas fa-bell"></i> <span>Notifikasi</span></a></li>
-=======
-
-            @else
-            <li class="{{ request()->routeIs('orangtua.dashboard.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('orangtua.dashboard') }}"><i class="fas fa-columns"></i> <span>Dashboard</span></a></li>
->>>>>>> a01621e (Initial commit)
             <li class="{{ request()->routeIs('orangtua.tugas.siswa') ? 'active' : '' }}"><a class="nav-link" href="{{ route('orangtua.tugas.siswa') }}"><i class="fas fa-list"></i> <span>Tugas</span></a></li>
             @endif
 

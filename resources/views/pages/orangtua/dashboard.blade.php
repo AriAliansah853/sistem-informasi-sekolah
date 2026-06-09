@@ -83,7 +83,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-12 col-sm-12 col-lg-3">
             <div class="card card-hero" style="margin-top: 36px">
                 <div class="card-header">
@@ -123,9 +122,6 @@
             </div>
         </div>
         {{-- <div class="col-12 col-sm-12 col-lg-3">
-=======
-                {{-- <div class="col-12 col-sm-12 col-lg-3">
->>>>>>> a01621e (Initial commit)
                     <div class="card card-hero" style="margin-top: 36px">
                         <div class="card-header">
                             <div class="card-icon">
