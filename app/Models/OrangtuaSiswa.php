@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class OrangtuaSiswa extends Model
+class OrangtuaSiswa extends BaseModel
 {
     //
 }
+

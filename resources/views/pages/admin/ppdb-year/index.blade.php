@@ -42,8 +42,8 @@
                                                 <td>{{ $ppdb->source_url ? (strlen($ppdb->source_url) > 40 ? substr($ppdb->source_url, 0, 40) . '...' : $ppdb->source_url) : '-' }}</td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('ppdb-year.edit', $ppdb->id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                        <form method="POST" action="{{ route('ppdb-year.destroy', $ppdb->id) }}">
+                                                        <a href="{{ route('ppdb-year.edit', $ppdb) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                        <form method="POST" action="{{ route('ppdb-year.destroy', $ppdb) }}">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Hapus" style="margin-left: 8px"><i class="fas fa-trash-alt"></i> Hapus</button>

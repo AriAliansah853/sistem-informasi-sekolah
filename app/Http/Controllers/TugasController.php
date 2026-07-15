@@ -82,7 +82,7 @@ class TugasController extends Controller
      */
     public function show($id)
     {
-        $tugas = Tugas::find($id);
+        $tugas = Tugas::find(\App\Models\BaseModel::decodeRouteKey($id));
         $kelas = Kelas::find($tugas->kelas_id);
         $jawaban = Jawaban::where('tugas_id', $id)->get();
         return view('pages.guru.tugas.show', compact('tugas', 'kelas', 'jawaban'));
@@ -98,7 +98,7 @@ class TugasController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
-        $tugas = Tugas::find($id);
+        $tugas = Tugas::find(\App\Models\BaseModel::decodeRouteKey($id));
         $kelas = Kelas::all();
         return view('pages.guru.tugas.edit', compact('tugas', 'kelas'));
     }
@@ -115,7 +115,7 @@ class TugasController extends Controller
 
         $data = $request->all();
 
-        $tugas = Tugas::find($id);
+        $tugas = Tugas::find(\App\Models\BaseModel::decodeRouteKey($id));
         $tugas->update($data);
 
         $this->validate($request, [
@@ -150,7 +150,7 @@ class TugasController extends Controller
      */
     public function destroy($id)
     {
-        $tugas = Tugas::find($id);
+        $tugas = Tugas::find(\App\Models\BaseModel::decodeRouteKey($id));
         $lokasi = 'file/tugas/' . $tugas->file;
         if (File::exists($lokasi)) {
             File::delete($lokasi);
@@ -201,7 +201,7 @@ class TugasController extends Controller
 
     public function download($id)
     {
-        $file = Tugas::findOrFail($id);
+        $file = Tugas::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $path = storage_path('/app/public/' . $file->file);
         return Response::download($path);
     }
@@ -228,8 +228,10 @@ class TugasController extends Controller
 
     public function downloadJawaban($id)
     {
-        $file = Jawaban::findOrFail($id);
+        $file = Jawaban::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $path = storage_path('/app/public/' . $file->file);
         return Response::download($path);
     }
 }
+
+

@@ -90,7 +90,7 @@ class MateriController extends Controller
     {
         $id = Crypt::decrypt($id);
         $kelas = Kelas::all();
-        $materi = Materi::findOrFail($id);
+        $materi = Materi::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.guru.materi.edit', compact('materi', 'kelas'));
     }
@@ -139,7 +139,7 @@ class MateriController extends Controller
      */
     public function destroy($id)
     {
-        $materi = Materi::find($id);
+        $materi = Materi::find(\App\Models\BaseModel::decodeRouteKey($id));
         $lokasi = 'file/materi/' . $materi->file;
         if (File::exists($lokasi)) {
             File::delete($lokasi);
@@ -161,8 +161,10 @@ class MateriController extends Controller
 
     public function download($id)
     {
-        $file = Materi::findOrFail($id);
+        $file = Materi::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $path = storage_path('/app/public/' . $file->file);
         return Response::download($path);
     }
 }
+
+

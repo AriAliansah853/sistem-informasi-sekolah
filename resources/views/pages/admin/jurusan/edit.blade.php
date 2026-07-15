@@ -13,7 +13,7 @@
                         <a href="{{ route('jurusan.index') }}" class="btn btn-primary">Kembali</a>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('jurusan.update', $jurusan->id) }}">
+                        <form method="POST" action="{{ route('jurusan.update', $jurusan) }}">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

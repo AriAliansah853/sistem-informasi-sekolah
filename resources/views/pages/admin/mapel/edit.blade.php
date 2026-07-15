@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-                            <form method="POST" action="{{ route('mapel.update', $mapel->id) }}">
+                            <form method="POST" action="{{ route('mapel.update', $mapel) }}">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

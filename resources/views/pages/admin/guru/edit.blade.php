@@ -14,7 +14,7 @@
                         <a href="{{ route('guru.index') }}" class="btn btn-primary">Kembali</a>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('guru.update', $guru->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('guru.update', $guru) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <img src="{{ url(Storage::url($guru->foto)) }}" style="width: 120px" alt="foto guru">

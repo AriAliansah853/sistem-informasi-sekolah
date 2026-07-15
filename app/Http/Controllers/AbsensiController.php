@@ -26,7 +26,7 @@ class AbsensiController extends Controller
     public function input($kelasId)
     {
         $guru = Guru::where('user_id', Auth::id())->firstOrFail();
-        $kelas = Kelas::where('id', $kelasId)
+        $kelas = Kelas::where('id', \App\Models\BaseModel::decodeRouteKey($kelasId))
             ->where('guru_id', $guru->id)
             ->firstOrFail();
 
@@ -68,7 +68,9 @@ class AbsensiController extends Controller
 
         $this->sendParentNotifications($request->tanggal, $request->siswa_id, $request->status, $request->keterangan ?? []);
 
-        return redirect()->route('absensi.input', ['kelas' => $request->kelas_id, 'tanggal' => $request->tanggal])
+        $kelas = Kelas::findOrFail(\App\Models\BaseModel::decodeRouteKey($request->kelas_id));
+
+        return redirect()->route('absensi.input', ['kelas' => $kelas, 'tanggal' => $request->tanggal])
             ->with('success', 'Absensi berhasil disimpan.');
     }
 
@@ -219,3 +221,5 @@ class AbsensiController extends Controller
         }
     }
 }
+
+

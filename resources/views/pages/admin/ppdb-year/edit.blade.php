@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-                            <form action="{{ route('ppdb-year.update', $ppdbYear->id) }}" method="POST">
+                            <form action="{{ route('ppdb-year.update', $ppdbYear) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">

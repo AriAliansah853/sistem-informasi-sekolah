@@ -12,7 +12,7 @@
 
         <div class="card">
             <div class="card-body">
-                <form method="GET" action="{{ route('absensi.input', $kelas->id) }}">
+                <form method="GET" action="{{ route('absensi.input', $kelas) }}">
                     <div class="row align-items-end">
                         <div class="col-md-4">
                             <div class="form-group">

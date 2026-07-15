@@ -37,7 +37,7 @@
                                                 @else
                                                 <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal"><i class="nav-icon fas fa-paper-plane"></i>&nbsp; Kirim Jawaban</button>
                                                 @endif
-                                                <a href="{{ route('siswa.tugas.download', $tugas->id) }}" class="btn btn-success btn-sm align-self-center"><i class="nav-icon fas fa-download"></i> &nbsp; Download Tugas</a>
+                                                <a href="{{ route('siswa.tugas.download', $tugas) }}" class="btn btn-success btn-sm align-self-center"><i class="nav-icon fas fa-download"></i> &nbsp; Download Tugas</a>
                                             </div>
                                         </td>
                                     </tr>

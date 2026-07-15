@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Mapel extends Model
+class Mapel extends BaseModel
 {
     use HasFactory;
 
@@ -16,3 +14,4 @@ class Mapel extends Model
         return $this->belongsTo(Jurusan::class);
     }
 }
+

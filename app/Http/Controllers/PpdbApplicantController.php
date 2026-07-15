@@ -59,7 +59,7 @@ class PpdbApplicantController extends Controller
 
     public function show($id)
     {
-        $applicant = PpdbApplicant::findOrFail($id);
+        $applicant = PpdbApplicant::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.ppdb-applicant.show', compact('applicant'));
     }
@@ -74,12 +74,12 @@ class PpdbApplicantController extends Controller
         try {
             DB::beginTransaction();
 
-            $applicant = PpdbApplicant::findOrFail($id);
+            $applicant = PpdbApplicant::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $applicant->update($validated);
 
             DB::commit();
 
-            return redirect()->route('ppdb-applicant.show', $applicant->id)->with('success', 'Status pendaftaran berhasil diperbarui.');
+            return redirect()->route('ppdb-applicant.show', $applicant)->with('success', 'Status pendaftaran berhasil diperbarui.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withInput()->with('error', 'Terjadi kesalahan saat memperbarui status: ' . $e->getMessage());
@@ -91,7 +91,7 @@ class PpdbApplicantController extends Controller
         try {
             DB::beginTransaction();
 
-            $applicant = PpdbApplicant::findOrFail($id);
+            $applicant = PpdbApplicant::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $applicant->delete();
 
             DB::commit();
@@ -103,3 +103,5 @@ class PpdbApplicantController extends Controller
         }
     }
 }
+
+

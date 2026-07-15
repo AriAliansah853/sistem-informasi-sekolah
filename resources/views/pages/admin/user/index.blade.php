@@ -37,7 +37,7 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <form method="POST"
-                                                            action="{{ route('user.destroy', $data->id) }}">
+                                                            action="{{ route('user.destroy', $data) }}">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="btn btn-danger btn-sm show_confirm"

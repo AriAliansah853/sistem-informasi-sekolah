@@ -70,12 +70,12 @@
                             <span class="badge bg-success me-2">
                                 <i class="fas fa-check"></i> Sudah Dikerjakan
                             </span>
-                            <a href="{{ route('try-out-jawaban.hasil', $tryOut->hasilTryOuts()->where('siswa_id', $siswa->id)->first()->id) }}" 
+                            <a href="{{ route('try-out-jawaban.hasil', $tryOut->hasilTryOuts()->where('siswa_id', $siswa->id)->first()) }}" 
                                class="btn btn-sm btn-primary">
                                 <i class="fas fa-eye"></i> Lihat Hasil
                             </a>
                         @elseif($bisa_dikerjakan)
-                            <a href="{{ route('try-out-jawaban.kerjakan', $tryOut->id) }}" 
+                            <a href="{{ route('try-out-jawaban.kerjakan', $tryOut) }}" 
                                class="btn btn-sm btn-success w-100">
                                 <i class="fas fa-play"></i> Mulai Ujian
                             </a>

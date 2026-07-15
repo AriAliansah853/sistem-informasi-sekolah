@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Materi extends Model
+class Materi extends BaseModel
 {
     use HasFactory;
     protected $fillable = ['judul', 'deskripsi', 'file', 'guru_id', 'kelas_id'];
@@ -20,3 +18,4 @@ class Materi extends Model
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 }
+

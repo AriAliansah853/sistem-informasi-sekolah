@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Jawaban extends Model
+class Jawaban extends BaseModel
 {
     use HasFactory;
 
@@ -20,3 +18,4 @@ class Jawaban extends Model
         return $this->belongsTo(Siswa::class);
     }
 }
+

@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class PpdbYear extends Model
+class PpdbYear extends BaseModel
 {
     use HasFactory;
 
@@ -26,3 +24,4 @@ class PpdbYear extends Model
         'data_json' => 'array',
     ];
 }
+

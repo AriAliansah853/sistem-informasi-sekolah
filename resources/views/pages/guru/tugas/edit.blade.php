@@ -13,7 +13,7 @@
                             <a href="{{ route('tugas.index') }}" class="btn btn-primary">Kembali</a>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('tugas.update', $tugas->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('tugas.update', $tugas) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

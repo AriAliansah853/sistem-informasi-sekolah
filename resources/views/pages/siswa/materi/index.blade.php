@@ -31,7 +31,7 @@
                                                 <td>{{ $data->guru->mapel->nama_mapel }}</td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('siswa.materi.download', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-download"></i> &nbsp; Download Materi</a>
+                                                        <a href="{{ route('siswa.materi.download', $data) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-download"></i> &nbsp; Download Materi</a>
                                                     </div>
                                                 </td>
                                             </tr>

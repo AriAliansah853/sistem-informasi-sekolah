@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BankSoal extends Model
+class BankSoal extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
@@ -55,3 +54,4 @@ class BankSoal extends Model
         return $this->hasMany(JawabanSiswa::class);
     }
 }
+

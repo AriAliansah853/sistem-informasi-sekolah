@@ -92,7 +92,7 @@ class TryOutController extends Controller
 
             $tryOut = $this->tryOutService->createTryOut($validated);
 
-            return redirect()->route('try-out.edit-soal', $tryOut->id)
+            return redirect()->route('try-out.edit-soal', $tryOut)
                 ->with('success', 'Try out berhasil dibuat. Sekarang pilih soal-soal');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -168,7 +168,7 @@ class TryOutController extends Controller
 
             $tryOut = $this->tryOutService->updateTryOut($tryOut, $validated);
 
-            return redirect()->route('try-out.show', $tryOut->id)
+            return redirect()->route('try-out.show', $tryOut)
                 ->with('success', 'Try out berhasil diupdate');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -264,7 +264,7 @@ class TryOutController extends Controller
         try {
             $this->tryOutService->publishTryOut($tryOut);
 
-            return redirect()->route('try-out.show', $tryOut->id)
+            return redirect()->route('try-out.show', $tryOut)
                 ->with('success', 'Try out berhasil dipublikasikan');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -287,3 +287,5 @@ class TryOutController extends Controller
         return response()->json($soals);
     }
 }
+
+

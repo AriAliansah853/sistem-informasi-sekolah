@@ -51,10 +51,10 @@
                         </p>
                     </div>
                     <div class="card-footer bg-light">
-                        <a href="{{ route('hasil-try-out.show', $tryOut->id) }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('hasil-try-out.show', $tryOut) }}" class="btn btn-sm btn-primary">
                             <i class="fas fa-eye"></i> Lihat Detail
                         </a>
-                        <a href="{{ route('hasil-try-out.export', $tryOut->id) }}" class="btn btn-sm btn-success">
+                        <a href="{{ route('hasil-try-out.export', $tryOut) }}" class="btn btn-sm btn-success">
                             <i class="fas fa-download"></i> Export
                         </a>
                     </div>

@@ -34,7 +34,7 @@
                                         <td>{{ $item->nama_kelas }}</td>
                                         <td>{{ $item->siswa->count() }}</td>
                                         <td>
-                                            <a href="{{ route('absensi.input', $item->id) }}" class="btn btn-primary btn-sm">Input Absensi</a>
+                                            <a href="{{ route('absensi.input', $item) }}" class="btn btn-primary btn-sm">Input Absensi</a>
                                         </td>
                                     </tr>
                                     @empty

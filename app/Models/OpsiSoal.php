@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class OpsiSoal extends Model
+class OpsiSoal extends BaseModel
 {
     use HasFactory;
 
@@ -33,3 +31,4 @@ class OpsiSoal extends Model
         return $this->hasMany(JawabanSiswa::class);
     }
 }
+

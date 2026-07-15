@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class PembahasanSoal extends Model
+class PembahasanSoal extends BaseModel
 {
     use HasFactory;
 
@@ -23,3 +21,4 @@ class PembahasanSoal extends Model
         return $this->belongsTo(BankSoal::class);
     }
 }
+

@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class PengumumanSekolah extends Model
+class PengumumanSekolah extends BaseModel
 {
     protected $fillable = ['start_at', 'end_at', 'description'];
 
@@ -19,3 +17,4 @@ class PengumumanSekolah extends Model
             ->where('end_at', '>=', now());
     }
 }
+

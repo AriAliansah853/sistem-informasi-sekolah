@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TryOut extends Model
+class TryOut extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
@@ -74,3 +73,4 @@ class TryOut extends Model
         return $this->hasOne(StatistikTryOut::class);
     }
 }
+

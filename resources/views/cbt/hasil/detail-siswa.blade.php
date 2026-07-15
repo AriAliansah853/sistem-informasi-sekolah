@@ -10,7 +10,7 @@
             <small class="text-muted">{{ $hasilTryOut->tryOut->judul }} - {{ $hasilTryOut->siswa->nama }}</small>
         </div>
         <div class="col-md-4 text-end">
-            <a href="{{ route('hasil-try-out.show', $hasilTryOut->tryOut->id) }}" class="btn btn-secondary">
+            <a href="{{ route('hasil-try-out.show', $hasilTryOut->tryOut) }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
         </div>

@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Jurusan extends Model
+class Jurusan extends BaseModel
 {
     use HasFactory;
     protected $table = 'jurusans';
@@ -19,3 +17,4 @@ class Jurusan extends Model
         return $this->hasMany(Mapel::class);
     }
 }
+

@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class HasilTryOut extends Model
+class HasilTryOut extends BaseModel
 {
     use HasFactory;
 
@@ -49,3 +47,4 @@ class HasilTryOut extends Model
         return $this->hasMany(JawabanSiswa::class);
     }
 }
+

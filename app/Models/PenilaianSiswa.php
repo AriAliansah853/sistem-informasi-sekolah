@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class PenilaianSiswa extends Model
+class PenilaianSiswa extends BaseModel
 {
     use HasFactory;
 
@@ -54,3 +52,4 @@ class PenilaianSiswa extends Model
         return $this->belongsTo(Mapel::class, 'mapel_id');
     }
 }
+

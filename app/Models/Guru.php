@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Guru extends Model
+class Guru extends BaseModel
 {
     use HasFactory;
 
@@ -25,3 +23,4 @@ class Guru extends Model
         return $this->hasMany(Kelas::class);
     }
 }
+

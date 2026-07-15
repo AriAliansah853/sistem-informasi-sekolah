@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class StatistikTryOut extends Model
+class StatistikTryOut extends BaseModel
 {
     use HasFactory;
 
@@ -27,3 +25,4 @@ class StatistikTryOut extends Model
         return $this->belongsTo(TryOut::class);
     }
 }
+

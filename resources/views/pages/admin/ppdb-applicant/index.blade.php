@@ -40,8 +40,8 @@
                   </td>
                   <td>{{ $applicant->created_at->format('d M Y') }}</td>
                   <td>
-                    <a href="{{ route('ppdb-applicant.show', $applicant->id) }}" class="btn btn-info btn-sm">Lihat</a>
-                    <form action="{{ route('ppdb-applicant.destroy', $applicant->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Hapus pendaftaran ini?');">
+                    <a href="{{ route('ppdb-applicant.show', $applicant) }}" class="btn btn-info btn-sm">Lihat</a>
+                    <form action="{{ route('ppdb-applicant.destroy', $applicant) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Hapus pendaftaran ini?');">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

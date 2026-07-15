@@ -13,7 +13,7 @@
                             <a href="{{ route('siswa.index') }}" class="btn btn-primary">Kembali</a>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('siswa.update', $siswa->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('siswa.update', $siswa) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <img src="{{ asset('img/siswa/'.$siswa->foto) }}" style="width: 120px" alt="foto siswa">

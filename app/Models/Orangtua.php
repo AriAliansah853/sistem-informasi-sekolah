@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Orangtua extends Model
+class Orangtua extends BaseModel
 {
     use HasFactory;
 
@@ -26,3 +24,4 @@ class Orangtua extends Model
         return $this->hasMany(OrangtuaNotification::class);
     }
 }
+

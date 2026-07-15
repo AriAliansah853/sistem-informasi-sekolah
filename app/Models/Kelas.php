@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Kelas extends Model
+class Kelas extends BaseModel
 {
     use HasFactory;
 
@@ -21,3 +19,4 @@ class Kelas extends Model
         return $this->hasMany(Siswa::class);
     }
 }
+

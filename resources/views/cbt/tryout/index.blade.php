@@ -85,18 +85,18 @@
                                 <span class="badge bg-info">{{ $tryOut->statistik->jumlah_peserta ?? 0 }}</span>
                             </td>
                             <td>
-                                <a href="{{ route('try-out.show', $tryOut->id) }}" class="btn btn-sm btn-info" title="Lihat">
+                                <a href="{{ route('try-out.show', $tryOut) }}" class="btn btn-sm btn-info" title="Lihat">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('try-out.edit', $tryOut->id) }}" class="btn btn-sm btn-warning" title="Edit">
+                                <a href="{{ route('try-out.edit', $tryOut) }}" class="btn btn-sm btn-warning" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 @if($tryOut->status === 'draft')
-                                    <a href="{{ route('try-out.edit-soal', $tryOut->id) }}" class="btn btn-sm btn-primary" title="Atur Soal">
+                                    <a href="{{ route('try-out.edit-soal', $tryOut) }}" class="btn btn-sm btn-primary" title="Atur Soal">
                                         <i class="fas fa-tasks"></i>
                                     </a>
                                 @endif
-                                <form method="POST" action="{{ route('try-out.destroy', $tryOut->id) }}" style="display:inline;">
+                                <form method="POST" action="{{ route('try-out.destroy', $tryOut) }}" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin?')" title="Hapus">

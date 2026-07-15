@@ -100,7 +100,7 @@ class PengumumanSekolahController extends Controller
         try {
             DB::beginTransaction();
 
-            $pengumuman = PengumumanSekolah::findOrFail($id);
+            $pengumuman = PengumumanSekolah::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $pengumuman->start_at = $request->start_at;
             $pengumuman->end_at = $request->end_at;
             $pengumuman->description = $request->description;
@@ -123,7 +123,7 @@ class PengumumanSekolahController extends Controller
         try {
             DB::beginTransaction();
 
-            $pengumuman = PengumumanSekolah::findOrFail($id);
+            $pengumuman = PengumumanSekolah::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $pengumuman->delete();
 
             DB::commit();
@@ -135,3 +135,5 @@ class PengumumanSekolahController extends Controller
         }
     }
 }
+
+

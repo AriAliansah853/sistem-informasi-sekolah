@@ -7,7 +7,9 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -30,6 +32,21 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo()
+    {
+        if (Auth::user() && Auth::user()->roles === 'admin') {
+            return route('admin.dashboard');
+        } elseif (Auth::user() && Auth::user()->roles === 'guru') {
+            return route('guru.dashboard');
+        } elseif (Auth::user() && Auth::user()->roles === 'orangtua') {
+            return route('orangtua.dashboard');
+        } elseif (Auth::user() && Auth::user()->roles === 'siswa') {
+            return route('siswa.dashboard');
+        }
+
+        return route('landing');
+    }
 
     /**
      * Create a new controller instance.

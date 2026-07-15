@@ -94,3 +94,5 @@ class HomeController extends Controller
         return view('pages.orangtua.notifikasi', compact('notifications'));
     }
 }
+
+

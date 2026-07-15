@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Tugas extends Model
+class Tugas extends BaseModel
 {
     use HasFactory;
     protected $fillable = ['judul', 'deskripsi', 'kelas_id', 'guru_id', 'file'];
@@ -23,3 +21,4 @@ class Tugas extends Model
         return $this->hasMany(Jawaban::class, 'tugas_id');
     }
 }
+

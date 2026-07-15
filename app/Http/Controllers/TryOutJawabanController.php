@@ -8,6 +8,7 @@ use App\Models\JawabanSiswa;
 use App\Models\Siswa;
 use App\Services\JawabanService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TryOutJawabanController extends Controller
 {
@@ -25,11 +26,11 @@ class TryOutJawabanController extends Controller
      */
     public function indexForSiswa(Request $request)
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $siswa = Siswa::where('user_id', $user->id)->first();
 
         if (!$siswa) {
-            return redirect()->route('home')->with('error', 'Data siswa tidak ditemukan');
+            return redirect()->route('siswa.dashboard')->with('error', 'Data siswa tidak ditemukan');
         }
 
         // Get try out yang bisa diakses (sesuai kelas atau public)
@@ -61,11 +62,11 @@ class TryOutJawabanController extends Controller
      */
     public function showForSiswa(TryOut $tryOut)
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $siswa = Siswa::where('user_id', $user->id)->first();
 
         if (!$siswa) {
-            return redirect()->route('home')->with('error', 'Data siswa tidak ditemukan');
+            return redirect()->route('siswa.dashboard')->with('error', 'Data siswa tidak ditemukan');
         }
 
         // Check if siswa sudah pernah mengerjakan
@@ -74,7 +75,7 @@ class TryOutJawabanController extends Controller
             ->first();
 
         if ($hasilSebelumnya && $hasilSebelumnya->status === 'selesai') {
-            return redirect()->route('try-out-jawaban.hasil', $hasilSebelumnya->id)
+            return redirect()->route('try-out-jawaban.hasil', $hasilSebelumnya)
                 ->with('info', 'Anda sudah menyelesaikan try out ini');
         }
 
@@ -153,7 +154,7 @@ class TryOutJawabanController extends Controller
             'waktu_dikerjakan_detik' => 'nullable|integer'
         ]);
 
-        $user = auth()->user();
+        $user = Auth::user();
         $siswa = Siswa::where('user_id', $user->id)->first();
 
         if (!$siswa) {
@@ -182,7 +183,7 @@ class TryOutJawabanController extends Controller
             'try_out_id' => 'required|exists:try_outs,id'
         ]);
 
-        $user = auth()->user();
+        $user = Auth::user();
         $siswa = Siswa::where('user_id', $user->id)->first();
 
         if (!$siswa) {
@@ -207,11 +208,11 @@ class TryOutJawabanController extends Controller
      */
     public function showHasil(HasilTryOut $hasilTryOut)
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $siswa = Siswa::where('user_id', $user->id)->first();
 
         if (!$siswa || $hasilTryOut->siswa_id !== $siswa->id) {
-            return redirect()->route('home')
+            return redirect()->route('siswa.dashboard')
                 ->with('error', 'Anda tidak berhak mengakses halaman ini');
         }
 
@@ -227,3 +228,5 @@ class TryOutJawabanController extends Controller
         return view('cbt.jawaban.hasil-tryout', compact('hasilTryOut'));
     }
 }
+
+

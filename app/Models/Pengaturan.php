@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Pengaturan extends Model
+class Pengaturan extends BaseModel
 {
     use HasFactory;
 
@@ -26,3 +24,4 @@ class Pengaturan extends Model
         'contact_email'
     ];
 }
+

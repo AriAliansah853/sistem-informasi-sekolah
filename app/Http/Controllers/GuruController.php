@@ -81,7 +81,7 @@ class GuruController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $guru = Guru::findOrFail($id);
+        $guru = Guru::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.guru.profile', compact('guru'));
     }
@@ -96,7 +96,7 @@ class GuruController extends Controller
     {
         $id = Crypt::decrypt($id);
         $mapel = Mapel::all();
-        $guru = Guru::findOrFail($id);
+        $guru = Guru::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.guru.edit', compact('guru', 'mapel'));
     }
@@ -116,7 +116,7 @@ class GuruController extends Controller
             'nip.unique' => 'NIP sudah terdaftar',
         ]);
 
-        $guru = Guru::find($id);
+        $guru = Guru::find(\App\Models\BaseModel::decodeRouteKey($id));
         $guru->nama = $request->input('nama');
         $guru->nip = $request->input('nip');
         $guru->no_telp = $request->input('no_telp');
@@ -149,7 +149,7 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = Guru::find($id);
+        $guru = Guru::find(\App\Models\BaseModel::decodeRouteKey($id));
         $guru->delete();
 
         // Hapus data user
@@ -160,3 +160,5 @@ class GuruController extends Controller
         return back()->with('success', 'Data mapel berhasil dihapus!');
     }
 }
+
+

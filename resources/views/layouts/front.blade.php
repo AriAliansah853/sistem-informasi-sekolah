@@ -180,7 +180,17 @@
           @guest
             <li class="nav-item"><a class="nav-link btn btn-primary text-white ms-3" href="{{ route('login') }}">Masuk</a></li>
           @else
-            <li class="nav-item"><a class="nav-link btn btn-outline-primary ms-3" href="{{ route('home') }}">Dashboard</a></li>
+            @php
+                $dashboardRoute = 'siswa.dashboard';
+                if (auth()->user()->roles === 'admin') {
+                    $dashboardRoute = 'admin.dashboard';
+                } elseif (auth()->user()->roles === 'guru') {
+                    $dashboardRoute = 'guru.dashboard';
+                } elseif (auth()->user()->roles === 'orangtua') {
+                    $dashboardRoute = 'orangtua.dashboard';
+                }
+            @endphp
+            <li class="nav-item"><a class="nav-link btn btn-outline-primary ms-3" href="{{ route($dashboardRoute) }}">Dashboard</a></li>
           @endguest
         </ul>
       </div>

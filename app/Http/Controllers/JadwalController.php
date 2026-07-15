@@ -87,7 +87,7 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::find($id);
+        $jadwal = Jadwal::find(\App\Models\BaseModel::decodeRouteKey($id));
         $mapel = Mapel::orderBy('nama_mapel', 'desc')->get();
         $kelas = Kelas::orderBy('nama_kelas', 'desc')->get();
 
@@ -107,7 +107,7 @@ class JadwalController extends Controller
     {
         $data = $request->all();
 
-        $jadwal = Jadwal::findOrFail($id);
+        $jadwal = Jadwal::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $jadwal->update($data);
 
         return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil diperbaharui');
@@ -121,9 +121,11 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::find($id);
+        $jadwal = Jadwal::find(\App\Models\BaseModel::decodeRouteKey($id));
         $jadwal->delete();
 
         return redirect()->back()->with('success', 'Jadwal berhasil dihapus');
     }
 }
+
+

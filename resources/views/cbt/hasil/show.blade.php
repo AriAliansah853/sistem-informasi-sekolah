@@ -13,7 +13,7 @@
             <a href="{{ route('hasil-try-out.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
-            <a href="{{ route('hasil-try-out.export', $tryOut->id) }}" class="btn btn-success">
+            <a href="{{ route('hasil-try-out.export', $tryOut) }}" class="btn btn-success">
                 <i class="fas fa-download"></i> Export CSV
             </a>
         </div>
@@ -136,7 +136,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('hasil-try-out.show-siswa', $hasil->id) }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('hasil-try-out.show-siswa', $hasil) }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-eye"></i> Detail
                                 </a>
                             </td>
@@ -157,7 +157,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 // Fetch statistik chart
-fetch('{{ route("hasil-try-out.statistik-chart", $tryOut->id) }}')
+fetch('{{ route("hasil-try-out.statistik-chart", $tryOut) }}')
     .then(response => response.json())
     .then(data => {
         // Chart Distribusi Nilai

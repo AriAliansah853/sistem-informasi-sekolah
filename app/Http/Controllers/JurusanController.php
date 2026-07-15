@@ -69,7 +69,7 @@ class JurusanController extends Controller
      */
     public function edit($id)
     {
-        $jurusan = Jurusan::findOrFail($id);
+        $jurusan = Jurusan::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         return view('pages.admin.jurusan.edit', compact('jurusan'));
     }
 
@@ -90,7 +90,7 @@ class JurusanController extends Controller
 
         $data = $request->all();
 
-        $jurusan = Jurusan::findOrFail($id);
+        $jurusan = Jurusan::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $jurusan->update($data);
 
         return redirect()->route('jurusan.index')->with('success', 'Data jurusan berhasil diperbaharui!');
@@ -104,9 +104,11 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        $jurusan = Jurusan::findOrFail($id);
+        $jurusan = Jurusan::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $jurusan->delete();
 
         return back()->with('success', 'Data jurusan berhasil dihapus!');
     }
 }
+
+

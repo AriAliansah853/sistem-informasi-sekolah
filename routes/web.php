@@ -39,7 +39,6 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/ppdb-daftar', [PpdbApplicantController::class, 'create'])->name('ppdb.register');
 Route::post('/ppdb-daftar', [PpdbApplicantController::class, 'store'])->name('ppdb.register.store');
 Route::get('/ppdb/terima-kasih', [PpdbApplicantController::class, 'thanks'])->name('ppdb.thanks');

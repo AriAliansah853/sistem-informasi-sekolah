@@ -58,7 +58,7 @@ class PpdbYearController extends Controller
 
     public function edit($id)
     {
-        $ppdbYear = PpdbYear::findOrFail($id);
+        $ppdbYear = PpdbYear::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         return view('pages.admin.ppdb-year.edit', compact('ppdbYear'));
     }
 
@@ -77,7 +77,7 @@ class PpdbYearController extends Controller
         try {
             DB::beginTransaction();
 
-            $ppdbYear = PpdbYear::findOrFail($id);
+            $ppdbYear = PpdbYear::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $ppdbYear->update($validated);
 
             DB::commit();
@@ -94,7 +94,7 @@ class PpdbYearController extends Controller
         try {
             DB::beginTransaction();
 
-            $ppdbYear = PpdbYear::findOrFail($id);
+            $ppdbYear = PpdbYear::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
             $ppdbYear->delete();
 
             DB::commit();
@@ -162,3 +162,5 @@ class PpdbYearController extends Controller
         }
     }
 }
+
+

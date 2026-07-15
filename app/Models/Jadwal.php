@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Jadwal extends Model
+class Jadwal extends BaseModel
 {
     use HasFactory;
     protected $fillable = [
@@ -22,3 +20,4 @@ class Jadwal extends Model
         return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
     }
 }
+

@@ -81,7 +81,7 @@ class SiswaController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.siswa.profile', compact('siswa'));
     }
@@ -96,7 +96,7 @@ class SiswaController extends Controller
     {
         $id = Crypt::decrypt($id);
         $kelas = Kelas::all();
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.siswa.edit', compact('siswa', 'kelas'));
     }
@@ -149,7 +149,7 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        $siswa = Siswa::find($id);
+        $siswa = Siswa::find(\App\Models\BaseModel::decodeRouteKey($id));
         $lokasi = 'img/siswa/' . $siswa->foto;
         if (File::exists($lokasi)) {
             File::delete($lokasi);
@@ -159,3 +159,5 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus');
     }
 }
+
+

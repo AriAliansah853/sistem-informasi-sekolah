@@ -18,7 +18,7 @@
                         <a href="{{ route('jadwal.index') }}" class="btn btn-primary">Kembali</a>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('jadwal.update', $jadwal->id) }}">
+                        <form method="POST" action="{{ route('jadwal.update', $jadwal) }}">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

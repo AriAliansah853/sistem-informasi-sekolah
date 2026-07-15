@@ -73,7 +73,7 @@ class KelasController extends Controller
     public function edit($id)
     {
         // $id = Crypt::decrypt($id);
-        $kelas = Kelas::findOrFail($id);
+        $kelas = Kelas::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $guru = Guru::all();
         return view('pages.admin.kelas.edit', compact('kelas', 'guru'));
     }
@@ -94,7 +94,7 @@ class KelasController extends Controller
         ]);
 
         $data = $request->all();
-        $kelas = Kelas::findOrFail($id);
+        $kelas = Kelas::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $kelas->update($data);
 
         return redirect()->route('kelas.index')->with('success', 'Data kelas berhasil diperbarui');
@@ -108,7 +108,9 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        Kelas::find($id)->delete();
+        Kelas::find(\App\Models\BaseModel::decodeRouteKey($id))->delete();
         return back()->with('success', 'Data kelas berhasil dihapus!');
     }
 }
+
+

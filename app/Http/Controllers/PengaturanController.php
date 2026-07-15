@@ -86,7 +86,7 @@ class PengaturanController extends Controller
             'contact_email.email' => 'Email kontak harus berupa alamat email yang valid.',
         ]);
 
-        $pengaturan = Pengaturan::findOrFail($id);
+        $pengaturan = Pengaturan::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $pengaturan->name = $validatedData['nama_sekolah'];
         $pengaturan->hero_title = $validatedData['hero_title'] ?? null;
         $pengaturan->hero_subtitle = $validatedData['hero_subtitle'] ?? null;
@@ -131,3 +131,5 @@ class PengaturanController extends Controller
         abort(404);
     }
 }
+
+

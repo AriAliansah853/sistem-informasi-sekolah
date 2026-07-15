@@ -33,7 +33,7 @@
                                                 <td>{{ date("d-m-Y", strtotime($data->created_at)) ?? '' }}</td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('guru.jawaban.download', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-download"></i> &nbsp; Download Jawaban</a>
+                                                        <a href="{{ route('guru.jawaban.download', $data) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-download"></i> &nbsp; Download Jawaban</a>
                                                     </div>
                                                 </td>
                                             </tr>

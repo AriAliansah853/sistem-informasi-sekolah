@@ -13,7 +13,7 @@
                             <a href="{{ route('materi.index') }}" class="btn btn-primary">Kembali</a>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('materi.update', $materi->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('materi.update', $materi) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

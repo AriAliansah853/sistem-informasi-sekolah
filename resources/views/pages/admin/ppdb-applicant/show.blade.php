@@ -7,7 +7,7 @@
     <h1>Detail Calon Siswa PPDB</h1>
     <div>
       <a href="{{ route('ppdb-applicant.index') }}" class="btn btn-secondary">Kembali</a>
-      <form action="{{ route('ppdb-applicant.destroy', $applicant->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Hapus pendaftaran ini?');">
+      <form action="{{ route('ppdb-applicant.destroy', $applicant) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Hapus pendaftaran ini?');">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -73,7 +73,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="mb-4">Update Status Pendaftaran</h5>
-            <form action="{{ route('ppdb-applicant.update', $applicant->id) }}" method="POST">
+            <form action="{{ route('ppdb-applicant.update', $applicant) }}" method="POST">
               @csrf
               @method('PUT')
               <div class="mb-3">

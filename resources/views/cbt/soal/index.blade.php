@@ -109,13 +109,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('bank-soal.show', $soal->id) }}" class="btn btn-sm btn-info" title="Lihat">
+                                <a href="{{ route('bank-soal.show', $soal) }}" class="btn btn-sm btn-info" title="Lihat">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('bank-soal.edit', $soal->id) }}" class="btn btn-sm btn-warning" title="Edit">
+                                <a href="{{ route('bank-soal.edit', $soal) }}" class="btn btn-sm btn-warning" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form method="POST" action="{{ route('bank-soal.destroy', $soal->id) }}" style="display:inline;">
+                                <form method="POST" action="{{ route('bank-soal.destroy', $soal) }}" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus">

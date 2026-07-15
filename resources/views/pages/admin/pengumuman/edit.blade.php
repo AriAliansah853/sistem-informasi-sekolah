@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-                            <form method="POST" action="{{ route('pengumuman-sekolah.update', $pengumuman->id) }}">
+                            <form method="POST" action="{{ route('pengumuman-sekolah.update', $pengumuman) }}">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

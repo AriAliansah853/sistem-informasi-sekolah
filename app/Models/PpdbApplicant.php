@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class PpdbApplicant extends Model
+class PpdbApplicant extends BaseModel
 {
     use HasFactory;
 
@@ -33,3 +31,4 @@ class PpdbApplicant extends Model
         'tanggal_lahir' => 'date',
     ];
 }
+

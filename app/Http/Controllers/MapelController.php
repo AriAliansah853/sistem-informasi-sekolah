@@ -80,7 +80,7 @@ class MapelController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
-        $mapel = Mapel::findOrFail($id);
+        $mapel = Mapel::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
 
         return view('pages.admin.mapel.edit', compact('mapel'));
     }
@@ -95,7 +95,7 @@ class MapelController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $mapel = Mapel::findOrFail($id);
+        $mapel = Mapel::findOrFail(\App\Models\BaseModel::decodeRouteKey($id));
         $mapel->update($data);
 
         return redirect()->route('mapel.index')->with('success', 'Data mapel berhasil diperbarui!');
@@ -109,7 +109,9 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        Mapel::find($id)->delete();
+        Mapel::find(\App\Models\BaseModel::decodeRouteKey($id))->delete();
         return back()->with('success', 'Data mapel berhasil dihapus!');
     }
 }
+
+

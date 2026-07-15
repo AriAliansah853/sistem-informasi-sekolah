@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Siswa extends Model
+class Siswa extends BaseModel
 {
     use HasFactory;
 
@@ -31,3 +29,4 @@ class Siswa extends Model
         return $this->hasMany(Absensi::class);
     }
 }
+

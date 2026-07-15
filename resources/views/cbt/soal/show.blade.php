@@ -9,7 +9,7 @@
             </h1>
         </div>
         <div class="col-md-4 text-end">
-            <a href="{{ route('bank-soal.edit', $bankSoal->id) }}" class="btn btn-warning">
+            <a href="{{ route('bank-soal.edit', $bankSoal) }}" class="btn btn-warning">
                 <i class="fas fa-edit"></i> Edit
             </a>
             <a href="{{ route('bank-soal.index') }}" class="btn btn-secondary">
@@ -103,7 +103,7 @@
     </div>
 
     @if($bankSoal->status === 'draft')
-        <form action="{{ route('bank-soal.publish', $bankSoal->id) }}" method="POST" style="display:inline;">
+        <form action="{{ route('bank-soal.publish', $bankSoal) }}" method="POST" style="display:inline;">
             @csrf
             @method('PATCH')
             <button type="submit" class="btn btn-success">

@@ -34,11 +34,11 @@
                                                 <td>{{ $data->description }}</td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('pengumuman-sekolah.edit', Crypt::encrypt($data->id)) }}"
+                                                        <a href="{{ route('pengumuman-sekolah.edit', Crypt::encrypt($data)) }}"
                                                             class="btn btn-success btn-sm"><i
                                                                 class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                                                         <form method="POST"
-                                                            action="{{ route('pengumuman-sekolah.destroy', $data->id) }}">
+                                                            action="{{ route('pengumuman-sekolah.destroy', $data) }}">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="btn btn-danger btn-sm show_confirm"

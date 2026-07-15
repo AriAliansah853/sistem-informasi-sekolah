@@ -88,7 +88,7 @@ class BankSoalController extends Controller
             $validated['guru_id'] = $guru->id;
             $soal = $this->soalService->createSoal($validated);
 
-            return redirect()->route('bank-soal.show', $soal->id)
+            return redirect()->route('bank-soal.show', $soal)
                 ->with('success', 'Soal berhasil dibuat');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -161,7 +161,7 @@ class BankSoalController extends Controller
         try {
             $bankSoal = $this->soalService->updateSoal($bankSoal, $validated);
 
-            return redirect()->route('bank-soal.show', $bankSoal->id)
+            return redirect()->route('bank-soal.show', $bankSoal)
                 ->with('success', 'Soal berhasil diupdate');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -206,7 +206,9 @@ class BankSoalController extends Controller
 
         $this->soalService->publishSoal($bankSoal);
 
-        return redirect()->route('bank-soal.show', $bankSoal->id)
+        return redirect()->route('bank-soal.show', $bankSoal)
             ->with('success', 'Soal berhasil dipublikasikan');
     }
 }
+
+
