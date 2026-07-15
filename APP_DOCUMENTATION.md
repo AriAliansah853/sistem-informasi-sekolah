@@ -139,7 +139,19 @@ Model yang digunakan di aplikasi mencakup:
 7. Jalankan `npm run dev`.
 8. Jalankan server dengan `php artisan serve`.
 
-## 10. Tips Penggunaan
+## 11. Deploy ke Production
+1. Salin `.env.example` ke `.env` di server produksi.
+2. Set `APP_ENV=production` dan `APP_DEBUG=false`.
+3. Isi `APP_URL`, database, mail, dan kredensial lain di `.env`.
+4. Jika belum ada `APP_KEY`, jalankan `php artisan key:generate --force`.
+5. Jalankan `composer install --optimize-autoloader --no-dev`.
+6. Jalankan `npm install` dan `npm run build` untuk aset frontend.
+7. Jalankan `php artisan migrate --force` dan jika perlu `php artisan db:seed --force`.
+8. Jalankan `php artisan config:cache`, `php artisan route:cache`, dan `php artisan view:cache`.
+9. Pastikan folder `storage` dan `bootstrap/cache` memiliki izin tulis yang benar.
+10. Jangan commit file `.env` ke Git; cukup simpan `.env.example` untuk referensi.
+
+## 12. Tips Penggunaan
 - Gunakan role admin untuk mengelola data master terlebih dahulu.
 - Pastikan data guru, mapel, kelas, dan siswa telah terisi sebelum membuat jadwal atau penilaian.
 - Untuk PPDB tahunan, gunakan fitur import JSON sebagai sumber data web jika tersedia.
