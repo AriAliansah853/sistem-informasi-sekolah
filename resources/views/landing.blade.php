@@ -35,7 +35,7 @@
       <div class="col-md-3 scroll-reveal">
         <div class="card stats-card p-4 h-100">
           <h2 class="display-5 fw-bold">520+</h2>
-          <p class="mb-0 text-muted">Siswa Aktif</p>
+          <p class="mb-0 text-muted">Siswa Aktifffffffffffffffffffffffffffffffffffffff</p>
         </div>
       </div>
       <div class="col-md-3 scroll-reveal">
