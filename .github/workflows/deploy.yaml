@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /var/www/html/sistem-informasi-sekolah
+            cd /var/www/sistem-informasi-sekolah
 
             git fetch origin
             git reset --hard origin/main
