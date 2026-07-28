@@ -1,61 +1,35 @@
-#!/usr/bin/env bash
+name: Deploy Laravel to VPS
 
-# Automated deployment script for VPS
-# Usage:
-#   chmod +x deploy.sh
-#   ./deploy.sh [branch] [--seed]
-# Example:
-#   ./deploy.sh main --seed
+on:
+  push:
+    branches:
+      - main
 
-set -euo pipefail
-IFS=$'\n\t'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-APP_DIR="$(pwd)"
-BRANCH="${1:-main}"
-SEED=false
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/html/sistem-informasi-sekolah
 
-if [[ "${2:-}" == "--seed" ]]; then
-  SEED=true
-fi
+            git fetch origin
+            git reset --hard origin/main
 
-echo "[deploy] Starting deployment in ${APP_DIR}"
-echo "[deploy] Branch: ${BRANCH}"
+            composer install --no-dev --optimize-autoloader --no-interaction
 
-echo "[deploy] Fetching latest changes..."
-git fetch --all --prune
+            php artisan optimize:clear
+            php artisan migrate --force
+            php artisan optimize
 
-echo "[deploy] Checking out branch ${BRANCH}..."
-git checkout "${BRANCH}"
+            chown -R www-data:www-data storage bootstrap/cache
+            chmod -R 775 storage bootstrap/cache
 
-echo "[deploy] Pulling latest from origin/${BRANCH}..."
-git pull origin "${BRANCH}"
-
-echo "[deploy] Installing PHP dependencies..."
-composer install --no-dev --optimize-autoloader --prefer-dist
-
-if [[ -f package-lock.json || -f yarn.lock ]]; then
-  echo "[deploy] Installing Node dependencies..."
-  npm install
-fi
-
-echo "[deploy] Building frontend assets..."
-npm run production
-
-echo "[deploy] Running database migrations..."
-php artisan migrate --force
-
-if [[ "$SEED" == true ]]; then
-  echo "[deploy] Running database seeders..."
-  php artisan db:seed --force
-fi
-
-echo "[deploy] Caching config, routes, and views..."
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-echo "[deploy] Setting storage and cache permissions..."
-chmod -R ug+rwx storage bootstrap/cache || true
-
-echo "[deploy] Deployment completed successfully."
-echo "[deploy] Remember to set APP_ENV=production and APP_DEBUG=false in .env"
+            systemctl restart php8.2-fpm
