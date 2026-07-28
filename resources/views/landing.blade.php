@@ -41,7 +41,7 @@
       <div class="col-md-3 scroll-reveal">
         <div class="card stats-card p-4 h-100">
           <h2 class="display-5 fw-bold">72</h2>
-          <p class="mb-0 text-muted">Guru Profesional</p>
+          <p class="mb-0 text-muted">Guru Profesionalll</p>
         </div>
       </div>
       <div class="col-md-3 scroll-reveal">
@@ -113,24 +113,38 @@
       <p class="text-muted">Program kelas dunia untuk memperkuat kompetensi akademik dan karakter siswa.</p>
     </div>
     <div class="row g-4">
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-feature p-4 h-100">
-          <h5 class="fw-semibold">Program STEAM</h5>
-          <p class="text-muted small">Integrasi sains, teknologi, teknik, seni, dan matematika untuk inovasi.</p>
+      @if($programUnggulan->isNotEmpty())
+        @foreach($programUnggulan as $program)
+          <div class="col-md-6 col-lg-4 scroll-reveal">
+            <div class="card landing-feature p-4 h-100">
+              <h5 class="fw-semibold">{{ $program->name }}</h5>
+              <p class="text-muted small">{{ $program->description }}</p>
+              @if($program->target)
+                <span class="badge bg-primary text-white">Target: {{ $program->target }}</span>
+              @endif
+            </div>
+          </div>
+        @endforeach
+      @else
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-feature p-4 h-100">
+            <h5 class="fw-semibold">Program STEAM</h5>
+            <p class="text-muted small">Integrasi sains, teknologi, teknik, seni, dan matematika untuk inovasi.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-feature p-4 h-100">
-          <h5 class="fw-semibold">Bilingual Learning</h5>
-          <p class="text-muted small">Pembelajaran bahasa Inggris dan Bahasa Indonesia di semua mata pelajaran.</p>
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-feature p-4 h-100">
+            <h5 class="fw-semibold">Bilingual Learning</h5>
+            <p class="text-muted small">Pembelajaran bahasa Inggris dan Bahasa Indonesia di semua mata pelajaran.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-feature p-4 h-100">
-          <h5 class="fw-semibold">Program Vokasi Digital</h5>
-          <p class="text-muted small">Kelas coding, desain grafis, dan pengembangan aplikasi untuk masa depan karir.</p>
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-feature p-4 h-100">
+            <h5 class="fw-semibold">Program Vokasi Digital</h5>
+            <p class="text-muted small">Kelas coding, desain grafis, dan pengembangan aplikasi untuk masa depan karir.</p>
+          </div>
         </div>
-      </div>
+      @endif
     </div>
   </div>
 </section>
@@ -142,27 +156,40 @@
       <p class="text-muted">Pencapaian akademik dan non-akademik yang menunjukkan kualitas pendidikan kami.</p>
     </div>
     <div class="row g-4">
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-project p-4 h-100">
-          <span class="feature-icon mb-3 d-inline-flex"><strong>01</strong></span>
-          <h5 class="fw-semibold">Juara Olimpiade Matematika</h5>
-          <p class="text-muted small">Siswa kami meraih medali emas di kompetisi regional dan nasional.</p>
+      @if($prestasiSiswa->isNotEmpty())
+        @foreach($prestasiSiswa as $index => $prestasi)
+          <div class="col-md-6 col-lg-4 scroll-reveal">
+            <div class="card landing-project p-4 h-100">
+              <span class="feature-icon mb-3 d-inline-flex"><strong>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</strong></span>
+              <h5 class="fw-semibold">{{ $prestasi->jenis_prestasi }}</h5>
+              <p class="text-muted small mb-1"><strong>{{ $prestasi->nama_siswa }}</strong> - {{ $prestasi->kelas }}</p>
+              <p class="text-muted small">{{ $prestasi->deskripsi ?: 'Prestasi ini telah menjadi bukti nyata semangat belajar siswa kami.' }}</p>
+            </div>
+          </div>
+        @endforeach
+      @else
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-project p-4 h-100">
+            <span class="feature-icon mb-3 d-inline-flex"><strong>01</strong></span>
+            <h5 class="fw-semibold">Juara Olimpiade Matematika</h5>
+            <p class="text-muted small">Siswa kami meraih medali emas di kompetisi regional dan nasional.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-project p-4 h-100">
-          <span class="feature-icon mb-3 d-inline-flex"><strong>02</strong></span>
-          <h5 class="fw-semibold">Inovasi Teknologi</h5>
-          <p class="text-muted small">Tim robotika sekolah berhasil maju ke babak final tingkat provinsi.</p>
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-project p-4 h-100">
+            <span class="feature-icon mb-3 d-inline-flex"><strong>02</strong></span>
+            <h5 class="fw-semibold">Inovasi Teknologi</h5>
+            <p class="text-muted small">Tim robotika sekolah berhasil maju ke babak final tingkat provinsi.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4 scroll-reveal">
-        <div class="card landing-project p-4 h-100">
-          <span class="feature-icon mb-3 d-inline-flex"><strong>03</strong></span>
-          <h5 class="fw-semibold">Prestasi Seni</h5>
-          <p class="text-muted small">Karya seni siswa dipamerkan dalam event seni budaya tingkat nasional.</p>
+        <div class="col-md-6 col-lg-4 scroll-reveal">
+          <div class="card landing-project p-4 h-100">
+            <span class="feature-icon mb-3 d-inline-flex"><strong>03</strong></span>
+            <h5 class="fw-semibold">Prestasi Seni</h5>
+            <p class="text-muted small">Karya seni siswa dipamerkan dalam event seni budaya tingkat nasional.</p>
+          </div>
         </div>
-      </div>
+      @endif
     </div>
   </div>
 </section>
@@ -174,13 +201,23 @@
       <p class="text-muted">Momen pembelajaran, kegiatan ekstrakurikuler, dan inovasi siswa dalam suasana modern.</p>
     </div>
     <div class="row g-3">
-      @foreach(range(1,6) as $image)
-      <div class="mt-4 col-12 col-sm-6 col-lg-4 scroll-reveal">
-        <div class="gallery-item">
-          <img src="{{ $pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Galeri Kegiatan {{ $image }}" class="img-fluid">
-        </div>
-      </div>
-      @endforeach
+      @if($kegiatanSekolah->isNotEmpty())
+        @foreach($kegiatanSekolah->take(6) as $kegiatan)
+          <div class="mt-4 col-12 col-sm-6 col-lg-4 scroll-reveal">
+            <div class="gallery-item">
+              <img src="{{ $kegiatan->photo ? asset($kegiatan->photo) : ($pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg')) }}" alt="{{ $kegiatan->title }}" class="img-fluid">
+            </div>
+          </div>
+        @endforeach
+      @else
+        @foreach(range(1,6) as $image)
+          <div class="mt-4 col-12 col-sm-6 col-lg-4 scroll-reveal">
+            <div class="gallery-item">
+              <img src="{{ $pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Galeri Kegiatan {{ $image }}" class="img-fluid">
+            </div>
+          </div>
+        @endforeach
+      @endif
     </div>
   </div>
 </section>
@@ -192,27 +229,40 @@
       <p class="text-muted">Informasi terbaru tentang kegiatan sekolah, pendaftaran, dan agenda penting.</p>
     </div>
     <div class="row g-4">
-      <div class="col-md-4 scroll-reveal">
-        <div class="card landing-card h-100 p-4">
-          <span class="badge bg-primary text-white mb-3">PPDB</span>
-          <h5 class="fw-semibold">Pendaftaran Online Telah Dibuka</h5>
-          <p class="text-muted small">Daftar sekarang untuk mendapatkan informasi seleksi dan jadwal kegiatan orientasi.</p>
+      @if($kegiatanSekolah->isNotEmpty())
+        @foreach($kegiatanSekolah->take(3) as $kegiatan)
+          <div class="col-md-4 scroll-reveal">
+            <div class="card landing-card h-100 p-4">
+              <span class="badge bg-info text-white mb-3">Kegiatan</span>
+              <h5 class="fw-semibold">{{ $kegiatan->title }}</h5>
+              <p class="text-muted small mb-2"><strong>{{ \Carbon\Carbon::parse($kegiatan->tanggal)->translatedFormat('d F Y') }}</strong> - {{ $kegiatan->lokasi }}</p>
+              <p class="text-muted small">{{ Str::limit($kegiatan->description, 120) }}</p>
+            </div>
+          </div>
+        @endforeach
+      @else
+        <div class="col-md-4 scroll-reveal">
+          <div class="card landing-card h-100 p-4">
+            <span class="badge bg-primary text-white mb-3">PPDB</span>
+            <h5 class="fw-semibold">Pendaftaran Online Telah Dibuka</h5>
+            <p class="text-muted small">Daftar sekarang untuk mendapatkan informasi seleksi dan jadwal kegiatan orientasi.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4 scroll-reveal">
-        <div class="card landing-card h-100 p-4">
-          <span class="badge bg-info text-white mb-3">Kegiatan</span>
-          <h5 class="fw-semibold">Workshop Literasi Digital</h5>
-          <p class="text-muted small">Siswa mengikuti pelatihan teknologi terbaru bersama pakar industri.</p>
+        <div class="col-md-4 scroll-reveal">
+          <div class="card landing-card h-100 p-4">
+            <span class="badge bg-info text-white mb-3">Kegiatan</span>
+            <h5 class="fw-semibold">Workshop Literasi Digital</h5>
+            <p class="text-muted small">Siswa mengikuti pelatihan teknologi terbaru bersama pakar industri.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4 scroll-reveal">
-        <div class="card landing-card h-100 p-4">
-          <span class="badge bg-success text-white mb-3">Pengumuman</span>
-          <h5 class="fw-semibold">Jadwal Ujian Semester</h5>
-          <p class="text-muted small">Pengumuman jadwal ujian dan petunjuk pelaksanaan untuk siswa kelas X hingga XII.</p>
+        <div class="col-md-4 scroll-reveal">
+          <div class="card landing-card h-100 p-4">
+            <span class="badge bg-success text-white mb-3">Pengumuman</span>
+            <h5 class="fw-semibold">Jadwal Ujian Semester</h5>
+            <p class="text-muted small">Pengumuman jadwal ujian dan petunjuk pelaksanaan untuk siswa kelas X hingga XII.</p>
+          </div>
         </div>
-      </div>
+      @endif
     </div>
   </div>
 </section>

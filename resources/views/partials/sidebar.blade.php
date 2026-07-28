@@ -28,6 +28,12 @@
 
             <li class="{{ request()->routeIs('pengumuman-sekolah.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pengumuman-sekolah.index') }}"><i class="fas fa-bullhorn"></i> <span>Pengumuman</span></a></li>
 
+            <li class="{{ request()->routeIs('kegiatan-sekolah.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kegiatan-sekolah.index') }}"><i class="fas fa-calendar-day"></i> <span>Kegiatan</span></a></li>
+
+            <li class="{{ request()->routeIs('program-unggulan.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('program-unggulan.index') }}"><i class="fas fa-award"></i> <span>Program Unggulan</span></a></li>
+
+            <li class="{{ request()->routeIs('prestasi-siswa.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('prestasi-siswa.index') }}"><i class="fas fa-trophy"></i> <span>Prestasi Siswa</span></a></li>
+
             <li class="{{ request()->routeIs('ppdb-year.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ppdb-year.index') }}"><i class="fas fa-chart-line"></i> <span>PPDB Tahunan</span></a></li>
             <li class="{{ request()->routeIs('ppdb-applicant.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ppdb-applicant.index') }}"><i class="fas fa-user-graduate"></i> <span>Calon Siswa PPDB</span></a></li>
 
