@@ -25,11 +25,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //  if (Schema::hasTable('pengaturans')) {
+        try {
+        if (Schema::hasTable('pengaturans')) {
+                $setting = Pengaturan::first();
 
-            $pengaturan = Pengaturan::first();
-            View::share('pengaturan', $pengaturan);
-        // }
-        
+                if ($setting) {
+                    // kode Anda
+                }
+            }
+        } catch (\Throwable $e) {
+            // Abaikan ketika database belum siap
+        }
     }
 }
