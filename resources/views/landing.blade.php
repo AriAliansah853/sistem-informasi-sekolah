@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>D:\LARAVEL\SM\Sistem-Informasi-Sekolah\resources\views\landing.blade.php
 
 <section id="stats" class="py-5 bg-white">
   <div class="container">
