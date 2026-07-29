@@ -16,7 +16,7 @@
         <p class="lead mt-3 text-white-75">{{ $pengaturan->hero_subtitle ?? 'Solusi digital untuk manajemen sekolah yang profesional, transparan, dan ramah pengguna.' }}</p>
         <div class="mt-4 flex-wrap gap-3">
           <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Daftar PPD</a>
-          <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">Login</a>
+          <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">Loginaaaaaaa</a>
           <a href="#gallery" class="btn btn-outline-light btn-lg">Virtual Tour</a>
         </div>
       </div>
