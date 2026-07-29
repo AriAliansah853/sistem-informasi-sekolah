@@ -175,7 +175,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="#about">TentangGGGG</a></li>
-          <li class="nav-item"><a class="nav-link" href="#visi-misi">Visi & MisiGGGG</a></li>
+          <li class="nav-item"><a class="nav-link" href="#visi-misi">Visi & MisiGGGGG</a></li>
           <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
           @guest
             <li class="nav-item"><a class="nav-link btn btn-primary text-white ms-3" href="{{ route('login') }}">Masuk</a></li>
