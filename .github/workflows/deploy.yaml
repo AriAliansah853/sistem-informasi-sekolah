@@ -22,7 +22,7 @@ jobs:
 
             git fetch origin
             git reset --hard origin/main
-            git pull origin main
+            git pull
 
             chown -R www-data:www-data storage bootstrap/cache
             chmod -R 775 storage bootstrap/cache
