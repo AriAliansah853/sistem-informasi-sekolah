@@ -20,9 +20,22 @@ jobs:
           script: |
             cd /var/www/sistem-informasi-sekolah
 
+            echo "===== BEFORE ====="
+            pwd
+            git rev-parse HEAD
+            git status
+
             git fetch origin
+
+            echo "===== ORIGIN ====="
+            git rev-parse origin/main
+
             git reset --hard origin/main
-            git pull
+
+            echo "===== AFTER ====="
+            git rev-parse HEAD
+
+            php artisan optimize:clear
 
             chown -R www-data:www-data storage bootstrap/cache
             chmod -R 775 storage bootstrap/cache
