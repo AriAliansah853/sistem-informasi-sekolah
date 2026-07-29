@@ -18,23 +18,13 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            script: |
-              pwd
-              whoami
+            cd /var/www/sistem-informasi-sekolah
 
-              cd /var/www/sistem-informasi-sekolah
+            git fetch origin
+            git reset --hard origin/main
+            git pull
 
-              pwd
+            chown -R www-data:www-data storage bootstrap/cache
+            chmod -R 775 storage bootstrap/cache
 
-              git status
-              git branch
-              git remote -v
-
-              git fetch origin
-              git reset --hard origin/main
-
-              git log --oneline -3
-
-              php artisan optimize:clear
-
-              sudo systemctl restart php8.2-fpm
+            systemctl restart php8.2-fpm
