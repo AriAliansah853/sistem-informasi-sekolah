@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Pengaturan;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,18 +24,23 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        try {
-        if (Schema::hasTable('pengaturans')) {
-                $setting = Pengaturan::first();
+        if (app()->runningInConsole()) {
+            return;
+        }
 
-                if ($setting) {
-                    // kode Anda
-                }
+        try {
+            $pengaturan = null;
+
+            if (Schema::hasTable('pengaturans')) {
+                $pengaturan = Pengaturan::first();
             }
+
+            View::share('pengaturan', $pengaturan);
+            View::share('setting', $pengaturan);
         } catch (\Throwable $e) {
-            // Abaikan ketika database belum siap
+            report($e);
         }
     }
 }

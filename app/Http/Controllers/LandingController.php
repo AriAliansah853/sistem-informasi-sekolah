@@ -15,6 +15,8 @@ class LandingController extends Controller
             'name' => config('app.name'),
         ]);
 
+        // return $pengaturan;
+
         $programUnggulan = ProgramUnggulan::orderBy('id', 'desc')->get();
         $prestasiSiswa = PrestasiSiswa::orderBy('tahun', 'desc')->orderBy('id', 'desc')->get();
         $kegiatanSekolah = KegiatanSekolah::orderBy('tanggal', 'desc')->get();

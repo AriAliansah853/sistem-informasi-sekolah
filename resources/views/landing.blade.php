@@ -1,9 +1,9 @@
 ﻿@extends('layouts.front')
-@section('title', $pengaturan->name ?? 'Landing Page')
+@section('title', optional($pengaturan)->name ?? 'Landing Page')
 
 @section('content')
-<div class="landing-hero" style="background-image: url('{{ $pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg') }}')">
-  @if(!empty($pengaturan->hero_video))
+<div class="landing-hero" style="background-image: url('{{ optional($pengaturan)->hero_image ? URL::asset(optional($pengaturan)->hero_image) : asset('assets/img/example-image.jpg') }}')">
+  @if(!empty(optional($pengaturan)->hero_video))
     <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 hero-video">
       <source src="{{ URL::asset($pengaturan->hero_video) }}" type="video/mp4">
     </video>
@@ -12,17 +12,17 @@
     <div class="row align-items-center">
       <div class="col-lg-6 hero-content scroll-reveal">
         <span class="badge bg-white text-primary mb-3">Sekolah Unggul</span>
-        <h1 class="display-5 fw-bold">{{ $pengaturan->hero_title ?? 'Sistem Informasi Sekolah Modern' }}</h1>
-        <p class="lead mt-3 text-white-75">{{ $pengaturan->hero_subtitle ?? 'Solusi digital untuk manajemen sekolah yang profesional, transparan, dan ramah pengguna.' }}</p>
+        <h1 class="display-5 fw-bold">{{ optional($pengaturan)->hero_title ?? 'Sistem Informasi Sekolah Modern' }}</h1>
+        <p class="lead mt-3 text-white-75">{{ optional($pengaturan)->hero_subtitle ?? 'Solusi digital untuk manajemen sekolah yang profesional, transparan, dan ramah pengguna.' }}</p>
         <div class="mt-4 flex-wrap gap-3">
           <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Daftar PPDB</a>
-          <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">Login CUY 2 lagi cuyy</a>
+          <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">Login</a>
           <a href="#gallery" class="btn btn-outline-light btn-lg">Virtual Tour</a>
         </div>
       </div>
       <div class="col-lg-5 offset-lg-1 d-none d-lg-block scroll-reveal">
         <div class="card landing-card overflow-hidden">
-          <img src="{{ $pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Sekolah" class="img-fluid hero-image">
+          <img src="{{ optional($pengaturan)->hero_image ? URL::asset(optional($pengaturan)->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Sekolah" class="img-fluid hero-image">
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6 scroll-reveal">
         <h2 class="fw-bold">Profil Sekolah</h2>
-        <p class="text-muted">{{ $pengaturan->about_description ?? 'Sekolah ini dibangun untuk mendukung pengembangan akademik dan karakter siswa melalui fasilitas modern dan tenaga pendidik profesional.' }}</p>
+        <p class="text-muted">{{ optional($pengaturan)->about_description ?? 'Sekolah ini dibangun untuk mendukung pengembangan akademik dan karakter siswa melalui fasilitas modern dan tenaga pendidik profesional.' }}</p>
         <ul class="list-unstyled mt-4">
           <li class="mb-3"><strong>✔</strong> Standar internasional dengan lingkungan belajar inklusif.</li>
           <li class="mb-3"><strong>✔</strong> Sistem manajemen sekolah digital kelas dunia.</li>
@@ -205,7 +205,7 @@
         @foreach($kegiatanSekolah->take(6) as $kegiatan)
           <div class="mt-4 col-12 col-sm-6 col-lg-4 scroll-reveal">
             <div class="gallery-item">
-              <img src="{{ $kegiatan->photo ? asset($kegiatan->photo) : ($pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg')) }}" alt="{{ $kegiatan->title }}" class="img-fluid">
+              <img src="{{ $kegiatan->photo ? asset($kegiatan->photo) : (optional($pengaturan)->hero_image ? URL::asset(optional($pengaturan)->hero_image) : asset('assets/img/example-image.jpg')) }}" alt="{{ $kegiatan->title }}" class="img-fluid">
             </div>
           </div>
         @endforeach
@@ -213,7 +213,7 @@
         @foreach(range(1,6) as $image)
           <div class="mt-4 col-12 col-sm-6 col-lg-4 scroll-reveal">
             <div class="gallery-item">
-              <img src="{{ $pengaturan->hero_image ? URL::asset($pengaturan->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Galeri Kegiatan {{ $image }}" class="img-fluid">
+              <img src="{{ optional($pengaturan)->hero_image ? URL::asset(optional($pengaturan)->hero_image) : asset('assets/img/example-image.jpg') }}" alt="Galeri Kegiatan {{ $image }}" class="img-fluid">
             </div>
           </div>
         @endforeach
@@ -397,9 +397,9 @@
             <h2 class="fw-bold">Kontak & Lokasi</h2>
             <p class="text-muted">Hubungi tim administrasi kami untuk pendaftaran, tur sekolah, atau informasi lebih detail.</p>
             <div class="mt-4">
-              <p class="mb-2"><strong>Alamat</strong><br>{{ $pengaturan->contact_address ?? 'Jl. Contoh No. 1, Kecamatan, Kota' }}</p>
-              <p class="mb-2"><strong>Email</strong><br>{{ $pengaturan->contact_email ?? 'info@sekolah.com' }}</p>
-              <p class="mb-0"><strong>Telepon</strong><br>{{ $pengaturan->contact_phone ?? '0812-3456-7890' }}</p>
+              <p class="mb-2"><strong>Alamat</strong><br>{{ optional($pengaturan)->contact_address ?? 'Jl. Contoh No. 1, Kecamatan, Kota' }}</p>
+              <p class="mb-2"><strong>Email</strong><br>{{ optional($pengaturan)->contact_email ?? 'info@sekolah.com' }}</p>
+              <p class="mb-0"><strong>Telepon</strong><br>{{ optional($pengaturan)->contact_phone ?? '0812-3456-7890' }}</p>
             </div>
           </div>
         </div>
@@ -417,7 +417,7 @@
   <div class="container">
     <div class="row gy-4">
       <div class="col-md-5">
-        <h4 class="fw-bold">{{ $pengaturan->name ?? 'Sekolah Modern' }}</h4>
+        <h4 class="fw-bold">{{ optional($pengaturan)->name ?? 'Sekolah Modern' }}</h4>
         <p class="text-white-75">Sistem Informasi Sekolah modern untuk siswa, guru, orang tua, dan komunitas sekolah.</p>
       </div>
       <div class="col-md-3">
@@ -433,7 +433,7 @@
         <p class="text-white-75 small mb-0">Pelayanan informasi sekolah, pendaftaran, dan dukungan siswa dengan teknis modern dan ramah pengguna.</p>
       </div>
     </div>
-    <div class="text-center mt-4 text-white-50 small">© {{ date('Y') }} {{ $pengaturan->name ?? 'Sekolah Modern' }}. Semua hak dilindungi.</div>
+    <div class="text-center mt-4 text-white-50 small">© {{ date('Y') }} {{ optional($pengaturan)->name ?? 'Sekolah Modern' }}. Semua hak dilindungi.</div>
   </div>
 </footer>
 @endsection

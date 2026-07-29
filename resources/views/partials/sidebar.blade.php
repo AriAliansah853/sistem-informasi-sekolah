@@ -1,8 +1,8 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand mt-3">
-            <img src="{{ URL::asset($pengaturan->logo) ?? 'https://via.placeholder.com/300' }}" alt="" style="width: 50px">
-            <a href="">{{ $pengaturan->name ?? config('app.name') }}</a>
+            <img src="{{ optional($pengaturan)->logo ? URL::asset(optional($pengaturan)->logo) : 'https://via.placeholder.com/300' }}" alt="" style="width: 50px">
+            <a href="">{{ optional($pengaturan)->name ?? config('app.name') }}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="#">{{ strtoupper(substr(config('app.name'), 0, 2)) }}</a>
