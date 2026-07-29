@@ -33,3 +33,5 @@ jobs:
             chmod -R 775 storage bootstrap/cache
 
             systemctl restart php8.2-fpm
+
+            git pull origin main
