@@ -22,16 +22,9 @@ jobs:
 
             git fetch origin
             git reset --hard origin/main
-
-            composer install --no-dev --optimize-autoloader --no-interaction
-
-            php artisan optimize:clear
-            php artisan migrate --force
-            php artisan optimize
+            git pull origin main
 
             chown -R www-data:www-data storage bootstrap/cache
             chmod -R 775 storage bootstrap/cache
 
             systemctl restart php8.2-fpm
-
-            git pull origin main
