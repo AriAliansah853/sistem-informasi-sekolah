@@ -20,20 +20,10 @@ jobs:
           script: |
             cd /var/www/sistem-informasi-sekolah
 
-            echo "===== BEFORE ====="
-            pwd
-            git rev-parse HEAD
-            git status
-
             git fetch origin
-
-            echo "===== ORIGIN ====="
-            git rev-parse origin/main
-
             git reset --hard origin/main
 
-            echo "===== AFTER ====="
-            git rev-parse HEAD
+            git pull
 
             php artisan optimize:clear
 
